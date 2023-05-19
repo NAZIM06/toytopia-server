@@ -8,6 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 
+
+app.get('/', (req, res) => {
+  res.send('Ready To Generate Toys data')
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server listening by me at http://localhost:${port}`);
