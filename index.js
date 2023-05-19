@@ -25,10 +25,14 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+    // db and Collection
+    
+    const db = client.db('toyDB').collection('toy')
 
-// db and Collection
-
-
+    app.get('/' , async(req,res) => {
+      const result = await db.find().toArray()
+      res.send(result)
+  })
 
 
     // Send a ping to confirm a successful connection
