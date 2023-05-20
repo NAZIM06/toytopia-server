@@ -48,6 +48,7 @@ async function run() {
       const result =await db.insertOne(data)
       res.send(result)
   })
+  
   app.get('/all-toys/:id' , async(req,res) => {
         const query = {_id : new ObjectId(req.params.id)}
         const result = await db.find(query).toArray()
