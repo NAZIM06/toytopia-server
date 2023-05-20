@@ -48,36 +48,41 @@ async function run() {
       const result =await db.insertOne(data)
       res.send(result)
   })
-  
+
   app.get('/all-toys/:id' , async(req,res) => {
         const query = {_id : new ObjectId(req.params.id)}
         const result = await db.find(query).toArray()
         res.send(result)
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    app.get('/' , async(req,res) => {
-      const result = await db.find().toArray()
+  app.get('/' , async(req,res) => {
+        const result = await db.find().limit(20).toArray()
+        res.send(result)
+    })
+    app.get('/category' , async(req,res) => {
+      let query = {} ;
+      query = {category : req.query.category}
+      const result = await db.find(query).limit(6).toArray()
       res.send(result)
-      
   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
     // Send a ping to confirm a successful connection
